@@ -15,10 +15,10 @@ let package = Package(
                 .target(name: "UTSwin", condition: .when(platforms: [.windows])),
             ],
             swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-validate-tbd-against-ir=none"])
+                .unsafeFlags(["-Xfrontend", "-validate-tbd-against-ir=none"], .when(platforms: [.windows]))
             ]
         ),
-        .target(name: "UTSwin", linkerSettings: [.linkedLibrary("wsock32")]),
+        .target(name: "UTSwin"),
         .executableTarget(name: "UTSrun", dependencies: ["UTS"]),
         .testTarget(name: "UTSTests", dependencies: ["UTS"]),
     ]
